@@ -2,7 +2,7 @@
 
 One static site: `index.html` + `images` folder. No server, $0/month.
 
-## 1. Push updates (you know this part)
+## 1. Push updates (same as always)
 
 ```
 git add .
@@ -10,50 +10,47 @@ git commit -m "your message"
 git push
 ```
 
-GitHub Pages rebuilds automatically within a minute or two of every push.
+## 2. What's new in this version
 
-## 2. What changed in this rebuild
+Full visual rebuild, same working checkout underneath:
+- **Scrolling marquee ticker** under the top nav (real flowers / free shipping / etc.)
+- **Bigger, bolder hero** with floating annotation cards and a subtle parallax effect on the photo as you scroll
+- **Magnetic cursor dot** on desktop that reacts near clickable elements
+- **Product cards rebuilt** with hover image zoom and lift
+- **New pull-quote/stat section** between Shop and Our Story
+- **Inspiration gallery rebuilt** as a horizontal drag-to-scroll gallery (click and drag, or use the arrow buttons) with a progress bar, instead of a static stacked grid
+- **FAQ accordion**, working mobile hamburger menu — unchanged from before, still here
+- Subtle background grain texture for a less "flat" feel
 
-Full redesign — same content and working checkout, cleaner structure:
-- Announcement bar + sticky nav with a working mobile hamburger menu (the old one just hid the nav on mobile with no replacement — that's fixed)
-- Product section rebuilt as proper cards (image, name, price, color picker, pay button) in a responsive grid instead of the organic blob-shaped photo frames
-- Trust strip under the hero (real flowers / free shipping / hand-checked / secure checkout)
-- FAQ accordion (click to expand) combining clip care, checkout, color variation, and shipping — replaces the old static "Clip Care" grid
-- Scroll-reveal animation on sections as you scroll down
-- Same working PayPal checkout, color-swatch picker, and order-notification logic as before — nothing about how orders/payments work changed, just the surrounding design
+Checkout, color picker, PayPal Client ID, and order-notification logic are all unchanged — this was a design pass, not a functionality change.
 
 ## 3. Product photos
 
-All 6 product photos were replaced with your real photos (AI-cleaned by you, then lightly sharpened/contrast-adjusted by me) — these are the actual product listing images:
-- `product-floral-pair.jpg`
-- `product-turtle-blue.jpg`, `product-turtle-brown.jpg`, `product-turtle-cream.jpg`, `product-turtle-green.jpg`
-- `product-turtle-green-single.jpg`
+All 6 product photos are your real photos (AI-cleaned by you, lightly sharpened by me):
+`product-floral-pair.jpg`, `product-turtle-blue.jpg`, `product-turtle-brown.jpg`, `product-turtle-cream.jpg`, `product-turtle-green.jpg`, `product-turtle-green-single.jpg`
 
-The 8 `inspo-*.jpg` images stay in the "Styling Inspiration" gallery only — clearly labeled as mood photography, not product photos, so customers aren't misled about what ships.
+The 8 `inspo-*.jpg` images are AI-generated lifestyle/mood shots — they only appear in the "Styling Inspiration" gallery, clearly labeled as not literal product photos.
 
 ## 4. Checkout — still needs one thing
 
-PayPal Client ID is already wired in and working. The only remaining placeholder is the Formspree order-notification endpoint:
+PayPal Client ID is wired in and working. Formspree (the itemized order-notification email) is still a placeholder:
 
-1. Free account at formspree.io → **"+ New Form"** → name it "Luli Co. Orders"
-2. Copy the endpoint URL (looks like `https://formspree.io/f/abcdwxyz`)
-3. In `index.html`, find `YOUR_FORMSPREE_ENDPOINT` and replace it
-4. Push the update
+1. Free account at formspree.io → "+ New Form" → name it "Luli Co. Orders"
+2. Copy the endpoint (`https://formspree.io/f/abcdwxyz`)
+3. In `index.html`, replace `YOUR_FORMSPREE_ENDPOINT` with it
+4. Push
 
-Until that's set, checkout still works fine (PayPal takes payment either way) — you just won't get the itemized email/dashboard, only PayPal's own default payment notification.
+Until then, checkout still works — PayPal's own default payment notification still reaches you either way.
 
-## 5. Things you'll likely edit in index.html
+## 5. Things you'll likely edit
 
-- **Prices**: `16.99` / `14.99` / `9.99` — each appears in the visible price and in that product's `data-price` attribute, keep both in sync
-- **Turtle duo colors/stock**: the 4 swatches under Turtle Duo Set have `data-color`, `data-stock`, `data-img` — edit as you sell through
-- **FAQ answers**: plain text inside each `.faq-a-inner` div
-- **Email**: `moerouk@gmail.com` throughout
-- **TikTok**: already set to your real link
+- **Prices**: `16.99` / `14.99` / `9.99`, each appears in the visible price and that product's `data-price` attribute
+- **Turtle colors/stock**: `data-color`, `data-stock`, `data-img` on the 4 swatch buttons
+- **FAQ answers**: plain text inside each `.faq-a-inner`
+- **Stat numbers** in the pull-quote section (`100%`, `5`, `1/1`) — update if your actual color count changes
 
 ## 6. Inventory (as of this update)
 
 - Turtle Duo Set: 5 each in Blue, Brown, Crème Peach, Green (20 total)
 - Single Green Turtle Clip: 5
 - Pressed Petal Clip Duo: 12
-
-The defective blue clip and mismatched green pair are already excluded from these counts.
