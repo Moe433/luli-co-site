@@ -71,3 +71,14 @@ PayPal's embedded checkout already accepts a PayPal balance, linked bank, or deb
 - Pressed Petal Clip Duo: 12
 
 The defective blue clip and mismatched green pair are already excluded from these counts — being set aside as gifts, not sold. Update the numbers above (and the matching `data-stock` values in `index.html`) as orders come in.
+
+## 6. About the current photos
+
+All 6 product photos have the background removed and replaced with a clean, uniform off-white — no more carpet/room visible. Filenames are unchanged from before, so this was a drop-in image swap with no HTML edits needed:
+- `product-floral-pair.jpg`, `product-turtle-blue.jpg` — sourced from the cleaner factory delivery photos, these came out the cleanest
+- `product-turtle-cream.jpg`, `product-turtle-green.jpg`, `product-turtle-green-single.jpg` — sourced from your at-home photos, reworked with a stronger cutout technique (2nd pass) — should look meaningfully better than the first attempt
+- `product-turtle-brown.jpg` — same 2nd-pass technique, but this one's leopard-print pattern is the hardest case (lots of internal color contrast confuses the cutout). Check this one first — if it's still rough, the real fix is a photo on an actual plain white/light background (printer paper or poster board behind the product) rather than another automated attempt, since carpet is fundamentally a hard background to cut cleanly without a proper AI segmentation model, which isn't available in this environment.
+
+## 7. Styling inspiration gallery
+
+Added a new section between "Our Story" and "Clip Care" — 8 mood/lifestyle photos (`images/inspo-1.jpg` through `inspo-8.jpg`) showing the aesthetic direction, NOT claimed as literal photos of your inventory. There's a small disclosure line under the gallery ("Mood photography for styling inspiration — see the product listings above for real photos of exactly what ships") so customers aren't misled about what they're actually buying — the real product photos stay on the product listings themselves, untouched.

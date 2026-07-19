@@ -340,6 +340,28 @@
     color: var(--sage);
   }
 
+  /* ---------- Inspiration gallery ---------- */
+  .inspo-grid{
+    max-width: 1140px; margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+  }
+  .inspo-grid img{
+    width: 100%;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    border-radius: 16px;
+    box-shadow: 0 10px 24px -12px rgba(74,58,53,0.25);
+  }
+  .inspo-note{
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--ink-soft);
+    max-width: 520px;
+    margin: 24px auto 0;
+  }
+
   /* ---------- Care ---------- */
   .care{ padding: 90px 24px; }
   .care-grid{
@@ -418,6 +440,7 @@
     .product-photo{ max-width: 420px; margin: 0 auto; }
     .care-grid{ grid-template-columns: 1fr; }
     .footer-inner{ grid-template-columns: 1fr; }
+    .inspo-grid{ grid-template-columns: repeat(2, 1fr); }
   }
 
   @media (prefers-reduced-motion: reduce){
@@ -436,6 +459,7 @@
       <a href="#turtles">Turtle Duo</a>
       <a href="#single-turtle">Single Turtle</a>
       <a href="#about">Our Story</a>
+      <a href="#inspiration">The Look</a>
       <a href="#care">Clip Care</a>
     </nav>
   </div>
@@ -566,6 +590,26 @@
       <p>Every card that leaves our hands is packed by a small team who checks each piece before it ships. Because it's real flowers and hand-finished resin, slight variations in color and petal placement are part of what makes your clip yours.</p>
       <p class="about-signature">— the Luli Co. team</p>
     </div>
+  </section>
+
+  <!-- INSPIRATION GALLERY -->
+  <section class="section" id="inspiration" style="padding-top:64px;">
+    <div class="section-head">
+      <div class="section-eyebrow">Styling inspiration</div>
+      <h2>The look we're going for</h2>
+      <p>A few mood shots that capture the vibe — real petals, real shells, styled the Luli Co. way.</p>
+    </div>
+    <div class="inspo-grid">
+      <img src="images/inspo-1.jpg" alt="Styling inspiration: pressed-flower claw clip on a marble vanity" loading="lazy">
+      <img src="images/inspo-2.jpg" alt="Styling inspiration: assorted turtle clips on linen" loading="lazy">
+      <img src="images/inspo-3.jpg" alt="Styling inspiration: turtle and floral clips arranged together" loading="lazy">
+      <img src="images/inspo-4.jpg" alt="Styling inspiration: green turtle clip on a wooden dresser" loading="lazy">
+      <img src="images/inspo-5.jpg" alt="Styling inspiration: green turtle claw clip styled on a tray" loading="lazy">
+      <img src="images/inspo-6.jpg" alt="Styling inspiration: leopard-print turtle clip on terracotta" loading="lazy">
+      <img src="images/inspo-7.jpg" alt="Styling inspiration: pressed-flower claw clip on marble with rings" loading="lazy">
+      <img src="images/inspo-8.jpg" alt="Styling inspiration: opal turtle clip on a wood dresser with pearls" loading="lazy">
+    </div>
+    <p class="inspo-note">Mood photography for styling inspiration — see the product listings above for real photos of exactly what ships.</p>
   </section>
 
   <!-- CARE -->
