@@ -32,13 +32,10 @@ The moment a payment succeeds, the page silently sends you a clean order notific
 
 **You're already getting notified today, for free, with zero setup** — PayPal automatically emails you (and shows it in your PayPal app/account) every time you receive a payment. Everything below just adds a tidier, itemized version of that alongside it, plus a running dashboard of orders.
 
-### Setup — two things to paste into `index.html`
+### Setup — one thing left to paste into `index.html`
 
-**A. PayPal Client ID** (lets the embedded button actually work)
-1. Create a free PayPal Business account: paypal.com/business
-2. Go to developer.paypal.com → Apps & Credentials → create an app
-3. Copy the **Client ID**
-4. In `index.html`, find `YOUR_PAYPAL_CLIENT_ID` (one spot, near the bottom) and replace it
+**A. PayPal Client ID — already done ✓**
+Your real Client ID is already in the file.
 
 **B. Formspree endpoint** (turns the background order data into an email + dashboard)
 1. Create a free account at formspree.io
@@ -47,7 +44,7 @@ The moment a payment succeeds, the page silently sends you a clean order notific
 4. In `index.html`, find `YOUR_FORMSPREE_ENDPOINT` and replace it with your real endpoint
 5. Free tier covers 50 orders/month — plenty to start; it'll prompt you to upgrade if you outgrow that (good problem to have)
 
-Once both are in, redeploy (git add/commit/push) and you're live: customer pays in one step, you get an email with their name/address/item, and every order also lands in your Formspree dashboard as a running list — that's your "stay on top of everything" view without needing to build anything else.
+Once that's in, redeploy (git add/commit/push) and you're live: customer pays in one step, you get an email with their name/address/item/color, and every order also lands in your Formspree dashboard as a running list — that's your "stay on top of everything" view without needing to build anything else.
 
 ### A note on stock
 
@@ -61,11 +58,16 @@ PayPal's embedded checkout already accepts a PayPal balance, linked bank, or deb
 
 ## 4. Things you'll likely edit in index.html
 
-- **Prices**: search `16.99` / `14.99` — each appears in the visible price and in the button's `amount: { value: ... }` — keep both in sync per product
-- **Instagram**: search `instagram.com/luli.co`, swap in your real handle when ready
+- **Prices**: `16.99` (floral duo), `14.99` (turtle duo), `9.99` (single turtle) — each appears in the visible price and in that product's `data-price` attribute — keep both in sync
+- **Turtle duo colors/stock**: the 4 color swatches under Turtle Duo Set each have `data-color`, `data-stock`, and `data-img` attributes — edit stock numbers there as you sell through
+- **TikTok**: already set to your real link
 - **Product copy**: text inside `<h3>`, `<p class="desc">`, and `<li>` tags for each product
 - **Email**: already set to `moerouk@gmail.com` throughout
 
-## 5. Inventory note
+## 5. Inventory note (as of this update)
 
-The defective blue clip and mismatched green pair are being set aside as gifts, not sold — keep those out of whatever stock count you're tracking on your end.
+- Turtle Duo Set: 5 each in Blue, Brown, Crème Peach, Green (20 total)
+- Single Green Turtle Clip: 5
+- Pressed Petal Clip Duo: 12
+
+The defective blue clip and mismatched green pair are already excluded from these counts — being set aside as gifts, not sold. Update the numbers above (and the matching `data-stock` values in `index.html`) as orders come in.

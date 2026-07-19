@@ -272,6 +272,30 @@
   .price-note{ font-size:0.85rem; color: var(--ink-soft); }
 
   .paypal-slot{ max-width: 340px; min-height: 45px; }
+
+  .color-picker{
+    display:flex; gap:12px; margin-bottom: 14px;
+  }
+  .swatch{
+    width:34px; height:34px; border-radius:50%;
+    background: var(--swatch-color);
+    border: 2px solid transparent;
+    cursor:pointer;
+    padding:0;
+    position:relative;
+    transition: transform .15s ease, border-color .15s ease;
+  }
+  .swatch:hover{ transform: translateY(-2px); }
+  .swatch.active{
+    border-color: var(--ink);
+    box-shadow: 0 0 0 2px var(--cream), 0 0 0 3px var(--ink);
+  }
+  .color-label{
+    font-size: 0.88rem;
+    color: var(--ink-soft);
+    margin-bottom: 18px;
+  }
+  .color-label strong{ color: var(--ink); }
   .paypal-fallback{
     font-size: 0.82rem;
     color: var(--ink-soft);
@@ -410,6 +434,7 @@
     <nav class="links">
       <a href="#floral">Floral Clips</a>
       <a href="#turtles">Turtle Duo</a>
+      <a href="#single-turtle">Single Turtle</a>
       <a href="#about">Our Story</a>
       <a href="#care">Clip Care</a>
     </nav>
@@ -453,7 +478,7 @@
         <ul class="details">
           <li>Real pressed flowers set in resin — every piece is one of one</li>
           <li>Sold as a duo, packaged on a Luli Co. card</li>
-          <li>Colors ship as available from each small batch</li>
+          <li>12 in stock this batch</li>
         </ul>
         <div class="price-row">
           <span class="price">$16.99</span>
@@ -471,25 +496,62 @@
       </svg>
     </div>
 
-    <!-- PRODUCT: TURTLE -->
+    <!-- PRODUCT: TURTLE DUO (color picker) -->
     <div class="product reverse" id="turtles" style="margin-top:96px;">
       <div class="product-photo">
-        <img src="images/product-turtle-set.jpg" alt="Big and small acetate turtle-shaped hair clip set on a Luli Co. card" loading="lazy">
+        <img id="turtle-duo-img" src="images/product-turtle-blue.jpg" alt="Big and small acetate turtle-shaped hair clip duo on a Luli Co. card" loading="lazy">
       </div>
       <div class="product-copy">
         <span class="tag">Fan favorite</span>
         <h3>Turtle Duo Set</h3>
-        <p class="desc">A big turtle claw clip and its little matching friend, cast in iridescent acetate with hand-painted gold detailing. Playful, sturdy, and easy to spot in any bag.</p>
+        <p class="desc">A big turtle claw clip and its little matching friend, cast in iridescent acetate with hand-painted gold shell linework. Playful, sturdy, and easy to spot in any bag.</p>
         <ul class="details">
           <li>Big claw clip + mini clip, sold as a matching set</li>
           <li>Iridescent acetate with gold shell linework</li>
           <li>Packaged on a Luli Co. card, ready to gift</li>
         </ul>
+        <div class="color-picker" role="group" aria-label="Choose a turtle color">
+          <button type="button" class="swatch active" data-color="Blue" data-stock="5" data-img="images/product-turtle-blue.jpg" style="--swatch-color:#9fb9c7" aria-label="Blue" aria-pressed="true"></button>
+          <button type="button" class="swatch" data-color="Brown" data-stock="5" data-img="images/product-turtle-brown.jpg" style="--swatch-color:#8a6a4a" aria-label="Brown" aria-pressed="false"></button>
+          <button type="button" class="swatch" data-color="Crème Peach" data-stock="5" data-img="images/product-turtle-cream.jpg" style="--swatch-color:#e3c7bb" aria-label="Crème Peach" aria-pressed="false"></button>
+          <button type="button" class="swatch" data-color="Green" data-stock="5" data-img="images/product-turtle-green.jpg" style="--swatch-color:#8a9678" aria-label="Green" aria-pressed="false"></button>
+        </div>
+        <p class="color-label">Color: <strong id="turtle-color-label">Blue</strong> · <span id="turtle-stock-label">5 left</span></p>
         <div class="price-row">
           <span class="price">$14.99</span>
           <span class="price-note">per set · free shipping over $35</span>
         </div>
-        <div id="paypal-turtle" class="paypal-slot" data-product="Turtle Duo Set" data-price="14.99"></div>
+        <div id="paypal-turtle" class="paypal-slot" data-product="Turtle Duo Set" data-price="14.99" data-color="Blue"></div>
+        <p class="paypal-fallback">Pay securely with PayPal — card, bank, or balance. We'll collect your shipping address as part of checkout. Prefer email? <a href="mailto:moerouk@gmail.com">moerouk@gmail.com</a> works too.</p>
+      </div>
+    </div>
+
+    <!-- gold vein divider -->
+    <div class="vein" aria-hidden="true">
+      <svg width="100%" height="48" viewBox="0 0 1140 48" preserveAspectRatio="none">
+        <path d="M0 24 C 180 4, 360 44, 540 24 S 900 4, 1140 24" fill="none" stroke="#b8923f" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+    </div>
+
+    <!-- PRODUCT: SINGLE GREEN TURTLE -->
+    <div class="product" id="single-turtle" style="margin-top:96px;">
+      <div class="product-photo">
+        <img src="images/product-turtle-green-single.jpg" alt="Single solid dark green acetate turtle hair clip on a Luli Co. card" loading="lazy">
+      </div>
+      <div class="product-copy">
+        <span class="tag">Limited</span>
+        <h3>Single Green Turtle Clip</h3>
+        <p class="desc">Just the big turtle on its own — solid deep green acetate with the same gold shell linework, for anyone who wants one statement clip instead of a pair.</p>
+        <ul class="details">
+          <li>One big claw clip (no mini clip included)</li>
+          <li>Solid deep green acetate, gold shell linework</li>
+          <li>5 in stock — once they're gone, they're gone</li>
+        </ul>
+        <div class="price-row">
+          <span class="price">$9.99</span>
+          <span class="price-note">single clip · free shipping over $35</span>
+        </div>
+        <div id="paypal-single-turtle" class="paypal-slot" data-product="Single Green Turtle Clip" data-price="9.99"></div>
         <p class="paypal-fallback">Pay securely with PayPal — card, bank, or balance. We'll collect your shipping address as part of checkout. Prefer email? <a href="mailto:moerouk@gmail.com">moerouk@gmail.com</a> works too.</p>
       </div>
     </div>
@@ -545,13 +607,14 @@
       <ul>
         <li><a href="#floral">Pressed Petal Duo</a></li>
         <li><a href="#turtles">Turtle Duo Set</a></li>
+        <li><a href="#single-turtle">Single Green Turtle</a></li>
       </ul>
     </div>
     <div>
       <h5>Say hello</h5>
       <ul>
         <li><a href="mailto:moerouk@gmail.com">moerouk@gmail.com</a></li>
-        <li><a href="https://instagram.com/luli.co" target="_blank" rel="noopener">Instagram</a></li>
+        <li><a href="https://www.tiktok.com/@lulico.accessories?_r=1&_t=ZP-989EnvcPPrj" target="_blank" rel="noopener">TikTok</a></li>
       </ul>
     </div>
   </div>
@@ -581,11 +644,8 @@
   for every transaction — that's built into having a PayPal account,
   zero setup. This just adds a tidier, itemized version alongside it.
 
-  SETUP — two things to paste in below:
-  1. PAYPAL CLIENT ID (free):
-     - Create a free PayPal Business account: paypal.com/business
-     - Go to developer.paypal.com → Apps & Credentials → create an app
-     - Copy the Client ID → replace YOUR_PAYPAL_CLIENT_ID below
+  SETUP — one thing left to paste in below:
+  1. PAYPAL CLIENT ID — already done ✓ (yours is wired in below)
 
   2. FORMSPREE ENDPOINT (free, for the order notification email):
      - Create a free account at formspree.io
@@ -596,7 +656,7 @@
        dashboard as a running list you can check anytime
   ============================================================
 -->
-<script src="https://www.paypal.com/sdk/js?client-id=YOUR_PAYPAL_CLIENT_ID&currency=USD"></script>
+<script src="https://www.paypal.com/sdk/js?client-id=BAAznmpS2819wmYhlHrP9t7c977T6NJluY8fKjhUO2YPnB1IpluX0diFoaadFdC1FsmClnw_ODwemZ61UE&currency=USD"></script>
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
 
@@ -622,15 +682,17 @@
   function mountPayPalButton(slotId) {
     var slot = document.getElementById(slotId);
     if (!slot || !window.paypal) return;
-    var product = slot.dataset.product;
-    var price = slot.dataset.price;
 
     paypal.Buttons({
       style: { layout: 'horizontal', color: 'black', shape: 'pill', label: 'pay', height: 45 },
       createOrder: function(data, actions) {
+        var product = slot.dataset.product;
+        var price = slot.dataset.price;
+        var color = slot.dataset.color; // present only on the turtle duo, reflects current swatch pick
+        var description = 'Luli Co. — ' + product + (color ? ' (' + color + ')' : '');
         return actions.order.create({
           purchase_units: [{
-            description: 'Luli Co. — ' + product,
+            description: description,
             amount: { value: price }
           }]
           // Shipping address is requested by default for a physical-goods
@@ -639,10 +701,13 @@
       },
       onApprove: function(data, actions) {
         return actions.order.capture().then(function(details) {
+          var product = slot.dataset.product;
+          var price = slot.dataset.price;
+          var color = slot.dataset.color;
           var shipping = details.purchase_units[0].shipping || {};
           var addr = shipping.address || {};
           notifyOrder({
-            item: product,
+            item: product + (color ? ' (' + color + ')' : ''),
             price: price,
             buyerName: details.payer.name.given_name + ' ' + (details.payer.name.surname || ''),
             buyerEmail: details.payer.email_address,
@@ -655,15 +720,36 @@
             country: addr.country_code || '',
             paypalOrderId: details.id
           });
-          showThankYou(slot, product);
+          showThankYou(slot, product + (color ? ' (' + color + ')' : ''));
         });
       }
     }).render('#' + slotId);
   }
 
+  // Turtle duo color picker — swaps photo + updates the PayPal order description
+  (function(){
+    var swatches = document.querySelectorAll('#turtles .swatch');
+    var img = document.getElementById('turtle-duo-img');
+    var colorLabel = document.getElementById('turtle-color-label');
+    var stockLabel = document.getElementById('turtle-stock-label');
+    var slot = document.getElementById('paypal-turtle');
+    swatches.forEach(function(btn){
+      btn.addEventListener('click', function(){
+        swatches.forEach(function(b){ b.classList.remove('active'); b.setAttribute('aria-pressed','false'); });
+        btn.classList.add('active');
+        btn.setAttribute('aria-pressed','true');
+        img.src = btn.dataset.img;
+        colorLabel.textContent = btn.dataset.color;
+        stockLabel.textContent = btn.dataset.stock + ' left';
+        if (slot) slot.dataset.color = btn.dataset.color;
+      });
+    });
+  })();
+
   if (window.paypal) {
     mountPayPalButton('paypal-floral');
     mountPayPalButton('paypal-turtle');
+    mountPayPalButton('paypal-single-turtle');
   } else {
     document.querySelectorAll('.paypal-slot').forEach(function(el){
       el.innerHTML = '<p style="font-size:0.85rem;color:#7a6b64;">Checkout is being set up — email <a href="mailto:moerouk@gmail.com">moerouk@gmail.com</a> to order for now.</p>';
