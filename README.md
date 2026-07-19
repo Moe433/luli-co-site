@@ -10,37 +10,39 @@ git commit -m "your message"
 git push
 ```
 
-## 2. NEW: real cart system
+## 2. What changed this round (from the ChatGPT feedback pass)
 
-This is the big change — checkout is no longer "pay per item." Now:
-- Each product has an **"Add to bag"** button
-- A cart icon in the top nav (with a live item count badge) opens a slide-in bag
-- Customers can adjust quantity or remove items, see a running subtotal
-- **One PayPal button at the bottom of the bag** checks out everything at once — a single payment, itemized in the description
-- The bag is saved in the browser (survives a refresh) until they check out
+**Implemented:**
+- Hero headline rewritten to lead with the product ("Hair clips made with real flowers")
+- Quick-add "+" button appears on hover over each product photo (always visible on mobile/touch), triggers the same add-to-bag logic as the main button
+- "Our Story" headline softened
+- Stock counts now styled in gold as a scarcity cue ("Only 12 left this batch", etc.) — numbers are still your real inventory, just styled to stand out
+- New "Follow the making process" section linking to TikTok, moved higher up the page (right after the Shop section)
+- New "gift from nature" section (birthdays / bridesmaids / Mother's Day / self-care)
+- Favicon added (`images/favicon-32.png`, `images/favicon-180.png`, generated from your logo)
+- Announcement bar copy tightened
 
-Nothing else about how payment works changed — same PayPal Client ID, same Formspree notification logic, just now it fires once per full order instead of once per item.
+**Deliberately NOT implemented — fabricated reviews.** The suggestion was to add fake testimonials attributed to made-up customers (e.g. `"Beautiful clip!" — Sarah`). That's not a design choice, it's a fabricated endorsement, and it's the kind of thing the FTC has gone after small brands for. Instead there's an honest placeholder section ("Be the first to leave one") that invites real customers to send a photo once you have actual orders — swap it out for genuine reviews as they come in.
 
-## 3. NEW: hero photo
+**Also clarified, not a real issue:** your PayPal Client ID being visible in the page source is normal and expected — Client IDs (unlike Secrets) are meant to be public, that's how the PayPal JS SDK always works. Nothing to fix there.
 
-Replaced the single casual lineup shot with an editorial 3-photo collage (`images/hero-collage.jpg`) built from your real product photos — one large image plus two smaller ones, rounded corners, no fabricated content, just your real photos arranged more intentionally. If you don't like the specific crop/arrangement, say so and I'll rebuild it differently.
+## 3. Still outstanding (real-world, not code)
 
-## 4. On the JS/CSS question
+- **Product photography**: the feedback about close-ups, worn shots, and hand-for-scale photos is genuinely good advice, but it needs an actual camera and your actual product — not something I can generate. Worth doing once you have a slow afternoon.
+- **Formspree endpoint**: still a placeholder (`YOUR_FORMSPREE_ENDPOINT`) — orders won't email you until this is set. Steps are in section 4 below.
 
-To be clear on what's actually in this file: custom cursor effect, scrolling marquee, hero parallax, scroll-reveal animations, drag-to-scroll gallery with progress bar, FAQ accordion, working mobile hamburger menu, and now the full cart system above — all hand-written CSS/JS in this one file, not a template or theme. If the live site isn't showing this, it's almost always a browser cache issue — hard refresh (Cmd+Shift+R / Ctrl+Shift+R) or check you're on the latest GitHub Pages deploy (Settings → Pages shows the last deploy time).
+## 4. Checkout — still needs one thing
 
-## 5. About that invoice PDF you sent
+PayPal Client ID is wired in and working (cart system, single checkout). Formspree (the itemized order-notification email) is still a placeholder:
 
-I pulled the embedded thumbnail photos out of it — they're small (240×240px to 350×278px) and would look soft/pixelated blown up to hero size, so I didn't use them directly. What was genuinely useful: the invoice's official item names don't quite match what the site currently calls them —
+1. Free account at formspree.io → "+ New Form" → name it "Luli Co. Orders"
+2. Copy the endpoint (`https://formspree.io/f/abcdwxyz`)
+3. In `index.html`, replace `YOUR_FORMSPREE_ENDPOINT` with it
+4. Push
 
-- Invoice says **"Pink turtle hair claw"** — the site currently calls this color "Crème Peach"
-- Invoice says **"Light blue hair claw"** — the site currently calls this "Blue"
-- Invoice says **"Dark green hair claw"** and **"Green hair claw"** as two distinct colors — the site currently only distinguishes "Green" and "Single Green"
-
-Also worth flagging: the invoice only lists **small** claws (4.5×5.5cm) for Green, Pink, and Brown/leopard — not for Dark green or Light blue. So if the "Blue Turtle Duo" on the site is supposed to be a big+small pair, it's worth double-checking you actually have a small light-blue piece, since the invoice doesn't show one being ordered. I didn't change the color names or duo/single structure yet since this affects real inventory accuracy — let me know how you want to reconcile it and I'll update the site to match exactly.
-
-## 6. Things you'll likely edit
+## 5. Things you'll likely edit
 
 - **Prices**: `16.99` / `14.99` / `9.99` in each `data-price` attribute
-- **Turtle colors/stock**: `data-color`, `data-stock`, `data-img` on the 4 swatch buttons
+- **Turtle colors/stock**: `data-color`, `data-stock`, `data-img` on the 4 swatch buttons — also update the matching `scarcity` text near each price
 - **FAQ answers**: plain text inside each `.faq-a-inner`
+- **Reviews section**: swap the placeholder copy for real reviews once you have them

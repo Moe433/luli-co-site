@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Luli Co. — Hair clips pressed from real flowers</title>
+<link rel="icon" type="image/png" href="images/favicon-32.png">
+<link rel="apple-touch-icon" href="images/favicon-180.png">
 <meta name="description" content="Small-batch hair clips made with real pressed flowers set in resin, plus our turtle duo clips. Handled with care, shipped with love.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -222,12 +224,23 @@
   .pcard-photo img{ width:100%; height:100%; object-fit:cover; transition: transform .6s cubic-bezier(.2,.7,.2,1); }
   .pcard:hover .pcard-photo img{ transform: scale(1.06); }
   .pcard-tag{ position:absolute; top:14px; left:14px; font-size: 0.68rem; letter-spacing:0.08em; text-transform:uppercase; font-weight:800; background: rgba(255,253,250,0.94); color: var(--gold); padding: 7px 13px; border-radius:999px; backdrop-filter: blur(4px); }
+  .pcard-quickadd{
+    position:absolute; bottom:14px; right:14px; width:44px; height:44px; border-radius:50%;
+    background: var(--ink); color: var(--white); border:none; cursor:pointer;
+    display:flex; align-items:center; justify-content:center; font-size:1.3rem; font-weight:400;
+    box-shadow: var(--shadow-md); opacity:0; transform: translateY(10px) scale(0.9);
+    transition: opacity .25s ease, transform .25s ease, background .2s ease;
+  }
+  .pcard:hover .pcard-quickadd{ opacity:1; transform: translateY(0) scale(1); }
+  .pcard-quickadd:hover{ background: var(--gold); }
+  @media (hover:none){ .pcard-quickadd{ opacity:1; transform:none; } }
   .pcard-body{ padding: 24px 24px 26px; display:flex; flex-direction:column; gap:13px; flex:1; }
   .pcard-body h3{ font-family: var(--display); font-weight:700; font-size: 1.35rem; }
   .pcard-body p.desc{ color: var(--ink-soft); font-size: 0.9rem; }
   .pcard-price-row{ display:flex; align-items:baseline; gap:10px; margin-top:auto; }
   .pcard-price{ font-family: var(--display); font-weight:800; font-size: 1.6rem; }
   .pcard-price-note{ font-size: 0.78rem; color: var(--ink-soft); }
+  .scarcity{ color: var(--gold); font-weight: 800; }
 
   .color-picker{ display:flex; gap:10px; }
   .swatch{ width:29px; height:29px; border-radius:50%; background: var(--swatch-color); border: 2px solid transparent; cursor:pointer; padding:0; transition: transform .18s cubic-bezier(.2,.8,.3,1.3), border-color .15s ease; }
@@ -317,8 +330,8 @@
 
 <div class="marquee" aria-hidden="true">
   <div class="marquee-track">
-    <span>Real pressed flowers</span><span>Free shipping $35+</span><span>Small-batch, hand-checked</span><span>Secure PayPal checkout</span>
-    <span>Real pressed flowers</span><span>Free shipping $35+</span><span>Small-batch, hand-checked</span><span>Secure PayPal checkout</span>
+    <span>Hair clips made with real flowers</span><span>Free shipping $35+</span><span>Limited handmade pieces</span><span>Secure PayPal checkout</span>
+    <span>Hair clips made with real flowers</span><span>Free shipping $35+</span><span>Limited handmade pieces</span><span>Secure PayPal checkout</span>
   </div>
 </div>
 
@@ -377,7 +390,7 @@
     <div class="hero-inner">
       <div>
         <div class="hero-eyebrow">✦ Small batch · Hand pressed</div>
-        <h1>Real flowers,<br><em>held</em> in every clip.</h1>
+        <h1>Hair clips made<br>with <em>real flowers.</em></h1>
         <p class="lede">Each Luli Co. clip is set with real pressed petals sealed in resin — no two are exactly alike. Paired with our little acetate turtles, made for anyone who wants their hair accessories to feel like keepsakes.</p>
         <div class="hero-ctas">
           <a href="#shop" class="btn btn-primary">Shop the collection</a>
@@ -424,15 +437,16 @@
         <div class="pcard-photo">
           <img src="images/product-floral-pair.jpg" alt="Pair of real pressed-flower resin hair clips on a Luli Co. branded card">
           <span class="pcard-tag">Best seller</span>
+          <button class="pcard-quickadd" aria-label="Quick add Pressed Petal Clip Duo to bag" data-quickadd="addFloral">+</button>
         </div>
         <div class="pcard-body">
           <h3>Pressed Petal Clip Duo</h3>
           <p class="desc">Two claw clips, each filled with real dried petals and gold leaf, sealed in clear resin.</p>
           <div class="pcard-price-row">
             <span class="pcard-price">$16.99</span>
-            <span class="pcard-price-note">per duo · 12 in stock</span>
+            <span class="pcard-price-note scarcity">Only 12 left this batch</span>
           </div>
-          <button class="btn btn-primary btn-full add-to-cart" data-name="Pressed Petal Clip Duo" data-price="16.99" data-img="images/product-floral-pair.jpg">Add to bag</button>
+          <button class="btn btn-primary btn-full add-to-cart" id="addFloral" data-name="Pressed Petal Clip Duo" data-price="16.99" data-img="images/product-floral-pair.jpg">Add to bag</button>
         </div>
       </div>
 
@@ -440,6 +454,7 @@
         <div class="pcard-photo">
           <img id="turtle-duo-img" src="images/product-turtle-blue.jpg" alt="Big and small acetate turtle-shaped hair clip duo on a Luli Co. card">
           <span class="pcard-tag">Fan favorite</span>
+          <button class="pcard-quickadd" aria-label="Quick add Turtle Duo Set to bag" data-quickadd="addTurtleDuo">+</button>
         </div>
         <div class="pcard-body">
           <h3>Turtle Duo Set</h3>
@@ -450,7 +465,7 @@
             <button type="button" class="swatch" data-color="Crème Peach" data-stock="5" data-img="images/product-turtle-cream.jpg" style="--swatch-color:#e3c7bb" aria-label="Crème Peach" aria-pressed="false"></button>
             <button type="button" class="swatch" data-color="Green" data-stock="5" data-img="images/product-turtle-green.jpg" style="--swatch-color:#8a9678" aria-label="Green" aria-pressed="false"></button>
           </div>
-          <p class="color-label">Color: <strong id="turtle-color-label">Blue</strong> · <span id="turtle-stock-label">5 left</span></p>
+          <p class="color-label">Color: <strong id="turtle-color-label">Blue</strong> · <span id="turtle-stock-label" class="scarcity">5 left</span></p>
           <div class="pcard-price-row">
             <span class="pcard-price">$14.99</span>
             <span class="pcard-price-note">per set</span>
@@ -463,18 +478,31 @@
         <div class="pcard-photo">
           <img src="images/product-turtle-green-single.jpg" alt="Single solid dark green acetate turtle hair clip on a Luli Co. card">
           <span class="pcard-tag">Limited</span>
+          <button class="pcard-quickadd" aria-label="Quick add Single Green Turtle Clip to bag" data-quickadd="addSingleTurtle">+</button>
         </div>
         <div class="pcard-body">
           <h3>Single Green Turtle Clip</h3>
           <p class="desc">Just the big turtle on its own — solid deep green acetate, for one statement clip instead of a pair.</p>
           <div class="pcard-price-row">
             <span class="pcard-price">$9.99</span>
-            <span class="pcard-price-note">single clip · 5 in stock</span>
+            <span class="pcard-price-note scarcity">Only 5 left — limited</span>
           </div>
-          <button class="btn btn-primary btn-full add-to-cart" data-name="Single Green Turtle Clip" data-price="9.99" data-img="images/product-turtle-green-single.jpg">Add to bag</button>
+          <button class="btn btn-primary btn-full add-to-cart" id="addSingleTurtle" data-name="Single Green Turtle Clip" data-price="9.99" data-img="images/product-turtle-green-single.jpg">Add to bag</button>
         </div>
       </div>
 
+    </div>
+  </section>
+
+  <!-- FOLLOW ALONG -->
+  <section class="section" style="padding-top:0; padding-bottom:64px;">
+    <div class="section-head reveal" style="margin-bottom:32px;">
+      <div class="section-eyebrow">Behind the scenes</div>
+      <h2>Follow the making process</h2>
+      <p>Pressing flowers, pouring resin, packing orders — we post the process on TikTok.</p>
+    </div>
+    <div style="text-align:center;">
+      <a href="https://www.tiktok.com/@lulico.accessories?_r=1&_t=ZP-989EnvcPPrj" target="_blank" rel="noopener" class="btn btn-ghost">Watch on TikTok</a>
     </div>
   </section>
 
@@ -488,11 +516,25 @@
     </div>
   </section>
 
+  <!-- GIFT ANGLE -->
+  <section class="section" style="padding-top:60px;">
+    <div class="section-head reveal">
+      <div class="section-eyebrow">A little gift from nature</div>
+      <h2>Perfect for...</h2>
+    </div>
+    <div class="trust-grid reveal" style="max-width:900px;">
+      <div class="trust-item"><span class="ic">🌸</span>Birthdays</div>
+      <div class="trust-item"><span class="ic">🌸</span>Bridesmaids</div>
+      <div class="trust-item"><span class="ic">🌸</span>Mother's Day</div>
+      <div class="trust-item"><span class="ic">🌸</span>Everyday self-care</div>
+    </div>
+  </section>
+
   <!-- ABOUT -->
   <section class="about" id="about">
     <div class="about-inner reveal">
       <div class="section-eyebrow">Our story</div>
-      <h2>Made, not manufactured on a whim.</h2>
+      <h2>Made with intention, not mass produced.</h2>
       <p>Luli Co. started with a simple idea: hair clips shouldn't feel disposable. We work directly with a small accessories workshop to hand-select real flowers and seal them, petal by petal, into clips built to actually hold your hair — not just sit pretty in a drawer.</p>
       <p>Every card that leaves our hands is packed by a small team who checks each piece before it ships. Because it's real flowers and hand-finished resin, slight variations in color and petal placement are part of what makes your clip yours.</p>
       <p class="about-signature">— the Luli Co. team</p>
@@ -525,6 +567,15 @@
     </div>
     <div class="gallery-progress"><div class="gp-track"><div class="gp-fill" id="galleryProgress"></div></div></div>
     <p class="inspo-note">Mood photography for styling inspiration — see the product listings above for real photos of exactly what ships.</p>
+  </section>
+
+  <!-- REVIEWS (honest placeholder — no fabricated testimonials) -->
+  <section class="section" style="padding-top:0;">
+    <div class="section-head reveal">
+      <div class="section-eyebrow">Customer reviews</div>
+      <h2>Be the first to leave one</h2>
+      <p>Luli Co. is brand new — once orders start coming in, real customer reviews will show up here. Bought something? Email <a href="mailto:lulico.cs@gmail.com" style="color:var(--gold); font-weight:700;">lulico.cs@gmail.com</a> with a photo and we'll feature it.</p>
+    </div>
   </section>
 
   <!-- FAQ -->
@@ -784,6 +835,14 @@
   document.querySelectorAll('.add-to-cart').forEach(function(btn){
     btn.addEventListener('click', function(){
       addToCart(btn.dataset.name, btn.dataset.price, btn.dataset.img, btn.dataset.color);
+    });
+  });
+
+  document.querySelectorAll('.pcard-quickadd').forEach(function(btn){
+    btn.addEventListener('click', function(e){
+      e.preventDefault();
+      var target = document.getElementById(btn.dataset.quickadd);
+      if (target) target.click();
     });
   });
 
